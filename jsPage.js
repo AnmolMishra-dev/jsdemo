@@ -5,7 +5,7 @@ array.push(34);
 console.log(array);
 var Name='jon';
 {
-let   Name ="Rahul";
+let   Name ="Arhus";
 console.log(Name)
 
 }
