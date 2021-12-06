@@ -21,4 +21,19 @@ arr=['fruit','food','vegetable'];
 arr.forEach(function (element,index,array) {
 console.log(element,index,array);
 
-})
+});
+let title=[];
+const showPosts = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const posts = await response.json();
+
+
+  
+   console.log(posts);
+  posts.forEach(title=>{
+    title=title['title'];
+    console.log(title)
+  }).forEach
+ }
+ 
+ showPosts().element;
