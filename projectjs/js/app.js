@@ -4,12 +4,13 @@ showNotes();
 // If user adds a note, add it to the localStorage
 let addTxt = document.getElementById("addTxt");
 let addBtn = document.getElementById("addBtn");
-function EnableDisable(addTxt) {
+let notetitle=document.getElementById("notetitle");
+function EnableDisable(addTxt,notetitle) {
   //Reference the Button.
 
 
   //Verify the TextBox value.
-  if (addTxt.value.trim() != "") {
+  if (addTxt.value.trim() != ""||notetitle.value.trim() != "") {
     //Enable the TextBox when TextBox has value.
     addBtn.disabled = false;
   } else {
@@ -21,13 +22,19 @@ function EnableDisable(addTxt) {
 addBtn.addEventListener("click", function (e) {
   console.log();
   let notes = localStorage.getItem("notes");
-  if (notes == null) {
+  let title = localStorage.getItem("title");
+  if (notes == null||title==null) {
+    titleObj=[];
     notesObj = [];
   } else {
+    titleObj= JSON.parse(title);
     notesObj = JSON.parse(notes);
   }
+  titleObj.push(notetitle.value);
   notesObj.push(addTxt.value);
+  localStorage.setItem("title", JSON.stringify(titleObj));
   localStorage.setItem("notes", JSON.stringify(notesObj));
+  notetitle.value="";
   addTxt.value = "";
   addBtn.disabled = true;
   //   console.log(notesObj);
@@ -37,9 +44,12 @@ addBtn.addEventListener("click", function (e) {
 // Function to show elements from localStorage
 function showNotes() {
   let notes = localStorage.notes;
-  if (notes == null) {
+  let title = localStorage.title;
+  if (notes == null || title==null) {
+    titleObj =[];
     notesObj = [];
   } else {
+    titleObj = JSON.parse(title);
     notesObj = JSON.parse(notes);
   }
   let html = "";
@@ -47,7 +57,7 @@ function showNotes() {
     html += `
             <div class="noteCard my-2 mx-2 card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Note ${index + 1}</h5>
+                        <h5 class="card-title">${titleObj[index]}</h5>
                         <p class="card-text"> ${element}</p>
                         <button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
                     </div>
