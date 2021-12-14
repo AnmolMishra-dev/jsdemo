@@ -4,7 +4,7 @@ showNotes();
 // If user adds a note, add it to the localStorage
 let addTxt = document.getElementById("addTxt");
 let addBtn = document.getElementById("addBtn");
-let notetitle=document.getElementById("notetitle");
+let notetitle=document.getElementById("addtitle");
 function EnableDisable(addTxt,notetitle) {
   //Reference the Button.
 
