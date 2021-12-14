@@ -10,7 +10,7 @@ function EnableDisable(addTxt,notetitle) {
 
 
   //Verify the TextBox value.
-  if (addTxt.value.trim() != ""||notetitle.value.trim() != "") {
+  if (addTxt.value.trim() != "") {
     //Enable the TextBox when TextBox has value.
     addBtn.disabled = false;
   } else {
@@ -22,17 +22,20 @@ function EnableDisable(addTxt,notetitle) {
 addBtn.addEventListener("click", function (e) {
   console.log();
   let notes = localStorage.getItem("notes");
-  let title = localStorage.getItem("title");
-  if (notes == null||title==null) {
-    titleObj=[];
+  
+  if (notes == null) {
+    
     notesObj = [];
   } else {
-    titleObj= JSON.parse(title);
+    
     notesObj = JSON.parse(notes);
   }
-  titleObj.push(notetitle.value);
-  notesObj.push(addTxt.value);
-  localStorage.setItem("title", JSON.stringify(titleObj));
+  let myObj = {
+    title: notetitle.value,
+    text: addTxt.value
+  }
+  notesObj.push(myObj);
+  
   localStorage.setItem("notes", JSON.stringify(notesObj));
   notetitle.value="";
   addTxt.value = "";
@@ -44,12 +47,12 @@ addBtn.addEventListener("click", function (e) {
 // Function to show elements from localStorage
 function showNotes() {
   let notes = localStorage.notes;
-  let title = localStorage.title;
-  if (notes == null || title==null) {
-    titleObj =[];
+
+  if (notes == null ) {
+ 
     notesObj = [];
   } else {
-    titleObj = JSON.parse(title);
+    
     notesObj = JSON.parse(notes);
   }
   let html = "";
@@ -57,8 +60,8 @@ function showNotes() {
     html += `
             <div class="noteCard my-2 mx-2 card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">${titleObj[index]}</h5>
-                        <p class="card-text"> ${element}</p>
+                        <h5 class="card-title">${element.title}</h5>
+                        <p class="card-text"> ${element.text}</p>
                         <button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
                     </div>
                 </div>`;
