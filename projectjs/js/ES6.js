@@ -9,7 +9,8 @@ class Employee {
     return 2020 - this.exp;
   }
 }
-console.log((data = new Employee("anmol", 10, 30)));
+data = new Employee("anmol", 10, 30);
+console.log(data);
 console.log(data.joinyear());
 class programer extends Employee {
   constructor(giveName, givenExp, givenAge, givenLanguage, github) {
