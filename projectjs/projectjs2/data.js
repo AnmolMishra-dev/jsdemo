@@ -83,7 +83,21 @@ function libraryFormSubmit(e) {
     }
 
     let book = new Book(name, author, type);
-    //console.log(book);
+   
+    // localStorage.setItem("book", JSON.stringify(book));
+    
+
+    // //console.log(book);
+    // let books = localStorage.getItem("book");
+  
+    // if (books == null) {
+      
+    //   notesObj = [];
+    // } else {
+      
+    //   notesObj = JSON.parse(books);
+    //   console.log(notesObj);
+    // }
 
     let display = new Display();
 
