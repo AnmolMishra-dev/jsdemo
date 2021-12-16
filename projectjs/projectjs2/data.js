@@ -7,16 +7,20 @@ class Book {
     }
 }
 
+
 class Display {
     add(book) {
-        console.log("Adding to UI");
+        console.log(book);
         let tableBody = document.getElementById('tableBody');
+       
         let uiString = `<tr>
                             <td>${book.name}</td>
                             <td>${book.author}</td>
                             <td>${book.type}</td>
                         </tr>`;
         tableBody.innerHTML += uiString;
+      
+        
     }
 
     clear() {
@@ -79,7 +83,7 @@ function libraryFormSubmit(e) {
     }
 
     let book = new Book(name, author, type);
-    console.log(book);
+    //console.log(book);
 
     let display = new Display();
 
