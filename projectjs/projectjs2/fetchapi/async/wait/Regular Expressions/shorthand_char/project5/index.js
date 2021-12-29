@@ -2,6 +2,8 @@ console.log("This is project 4");
 const name = document.getElementById('name');
 const email = document.getElementById('email');
 const phone = document.getElementById('phone');
+
+const inputFile = document.getElementById("file");
 let validEmail = false;
 let validPhone = false;
 let validUser = false;
@@ -64,10 +66,26 @@ phone.addEventListener('blur', ()=>{
         
     }
 })
+inputFile.addEventListener('blur', ()=>{
+
+
+    for (const file of inputFile.files) {
+        formData.append("files", file);
+        
+    }
+
+
+})
+
+// form.addEventListener("submit", handleSubmit);
+
+
 
 let submit = document.getElementById('submit');
 submit.addEventListener('click', (e)=>{
     e.preventDefault();
+    console.log(inputFile.files)
+
 
     console.log('You clicked on submit');
     console.log(validEmail, validUser, validPhone);
