@@ -3,12 +3,14 @@ const name = document.getElementById('name');
 const email = document.getElementById('email');
 const phone = document.getElementById('phone');
 
+
 const inputFile = document.getElementById("file");
 let validEmail = false;
 let validPhone = false;
 let validUser = false;
 $('#failure').hide();
 $('#success').hide();
+const formData = new FormData();
 
 // console.log(name, email, phone);
 name.addEventListener('blur', ()=>{
@@ -69,22 +71,28 @@ phone.addEventListener('blur', ()=>{
 inputFile.addEventListener('blur', ()=>{
 
 
-    for (const file of inputFile.files) {
-        formData.append("files", file);
-        
-    }
+    // for (const file of inputFile.files) {
+    //     formData.append("files", file);   
+    // }
 
+    // fetch("http://localhost:8000/files", {
+    //         method: "post",
+    //         body: formData,
+    //     }).catch((error) => ("Something went wrong!", error));
 
+        // console.log(formData.getAll);
 })
 
 // form.addEventListener("submit", handleSubmit);
 
 
 
+
 let submit = document.getElementById('submit');
 submit.addEventListener('click', (e)=>{
     e.preventDefault();
-    console.log(inputFile.files)
+    
+ 
 
 
     console.log('You clicked on submit');
@@ -101,6 +109,20 @@ submit.addEventListener('click', (e)=>{
         // $('#failure').alert('close');
         $('#failure').hide();
         $('#success').show();
+
+      
+        // console.log(formData);
+        // console.log(inputFile.files)
+
+        for (const file of inputFile.files) {
+            formData.append("files", file);   
+        }
+        console.log(inputFile.files);
+    
+        fetch("http://localhost:8080/uploadProfilePicture", {
+                method: "post",
+                body: inputFile.files,
+            }).catch((error) => ("Something went wrong!", error));
         
     }
     else{

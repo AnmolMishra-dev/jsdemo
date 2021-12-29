@@ -71,10 +71,17 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group" enctype="multipart/form-data" action="/uploadProfilePicture" method="POST">
 
                 <input id="file" type="file" multiple  class="form-control"  name="file"/>
             </div>
+            <!-- <form id="form" enctype="multipart/form-data">
+                <div class="form-group">
+                   
+                    <input id="file" type="file" multiple class="form-control"  name="file" />
+                </div>
+               
+            </form> -->
 
 
             <button id="submit" class="btn btn-primary  ">Submit</button>
