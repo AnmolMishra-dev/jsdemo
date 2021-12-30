@@ -1,11 +1,11 @@
 console.log("This Alarm");
 const alarmSubmit = document.getElementById('alarmSubmit');
 var toastLiveExample = document.getElementById('liveToast');
-document.body.style.backgroundColor = "yellow";
+document.body.style.backgroundColor = "AntiqueWhite";
 // Add an event listener to the submit button
 alarmSubmit.addEventListener('click', setAlarm);
 
-var audio = new Audio('https://www.soundjay.com/phone/sounds/telephone-ring-01a.mp3');
+var audio = new Audio('https://pl3dxz-a.akamaihd.net/downloads/ringtones/files/mp3/7-7-7-37561.mp3');
 
 // function to play the alarm ring tone
 function ringBell() {
@@ -25,7 +25,7 @@ function setAlarm(e) {
     if(timeToAlarm>=0){
         setTimeout(() => {
             console.log("Ringing now")
-            document.body.style.backgroundColor = "red";
+            document.body.style.backgroundColor = "Crimson";
             var toast = new bootstrap.Toast(toastLiveExample)
 
             toast.show('autohide');
