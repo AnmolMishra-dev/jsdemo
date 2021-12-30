@@ -1,7 +1,7 @@
 console.log("This Alarm");
 const alarmSubmit = document.getElementById('alarmSubmit');
 var toastLiveExample = document.getElementById('liveToast');
-
+document.body.style.backgroundColor = "yellow";
 // Add an event listener to the submit button
 alarmSubmit.addEventListener('click', setAlarm);
 
@@ -25,6 +25,7 @@ function setAlarm(e) {
     if(timeToAlarm>=0){
         setTimeout(() => {
             console.log("Ringing now")
+            document.body.style.backgroundColor = "red";
             var toast = new bootstrap.Toast(toastLiveExample)
 
             toast.show('autohide');
